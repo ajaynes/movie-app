@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Container, Row, Col, Card } from "react-bootstrap"
 import { getMovies } from "./actions"
+import MovieListItem from "./components/MovieListItem"
 
 class App extends Component {
   componentDidMount() {
@@ -15,17 +16,23 @@ class App extends Component {
         <Container>
           <Row>
             <Col>
-              <Card>
-                {movies === undefined ? (
-                  <div>loading</div>
-                ) : (
-                  <ul>
-                    {movies.map(movie => (
-                      <li key={movie.id}>{movie.title}</li>
+              {movies === undefined ? (
+                <div>loading</div>
+              ) : (
+                <Row>
+                  {movies
+                    .filter(movie => movie.original_language === "en")
+                    .map(m => (
+                      <MovieListItem
+                        key={m.id}
+                        poster={m.poster_path}
+                        title={m.original_title}
+                        overview={m.overview}
+                        id={m.id}
+                      />
                     ))}
-                  </ul>
-                )}
-              </Card>
+                </Row>
+              )}
             </Col>
           </Row>
         </Container>
@@ -33,10 +40,11 @@ class App extends Component {
     )
   }
 }
-// export default App
+
 const mapStateToProps = state => {
+  const movielist = state.results
   return {
-    movies: state.results,
+    movies: movielist,
   }
 }
 
