@@ -1,5 +1,6 @@
 import React from "react"
 import { Row, Col, Card, Button } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 const MovieListItem = props => {
   const { overview, title, poster, id } = props
@@ -17,7 +18,9 @@ const MovieListItem = props => {
             <Card.Body>
               <Card.Title>{title}</Card.Title>
               <Card.Text>{overview}</Card.Text>
-              <Button variant="primary">Go somewhere {id}</Button>
+              <Link to={`/moviedetails/${id}`}>
+                <Button variant="primary">Go somewhere {id}</Button>
+              </Link>
             </Card.Body>
           </Col>
         </Row>
