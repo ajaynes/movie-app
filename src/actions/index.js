@@ -45,7 +45,7 @@ const requestMoviesDetails = details => {
 export const getMovieDetails = movie_id => {
   return dispatch => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US&append_to_response=credit`
     )
       .then(response => response.json())
       .then(json => dispatch(requestMoviesDetails(json)))

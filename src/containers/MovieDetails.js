@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Container, Row, Col, Card, Button } from "react-bootstrap"
+import { Button } from "react-bootstrap"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { getMovieDetails } from "../actions"
@@ -11,14 +11,13 @@ class MovieDetails extends Component {
       : this.props.dispatch(getMovieDetails(this.props.id))
   }
   render() {
-    console.log(this.props)
-    console.log(this.props.match.params.movie_id)
+    const { title } = this.props
+    if (this.props.id === undefined) {
+      return <div>Loading...</div>
+    }
     return (
       <div>
-        {this.props.title}
-        {/*{this.props.genres.map(genre => (
-          <p>{genre.name}</p>
-        ))}*/}
+        {title}
         <Link to={`/`}>
           <Button variant="primary">Home</Button>
         </Link>

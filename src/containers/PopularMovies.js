@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Container, Row, Col, Card } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap"
 import { connect } from "react-redux"
 import { getMovies, getMovieID } from "../actions"
 import MovieListItem from "../components/MovieListItem"
@@ -7,7 +7,6 @@ import MovieListItem from "../components/MovieListItem"
 class PopularMovies extends Component {
   seeDetails = e => {
     this.props.dispatch(getMovieID(e.target.value))
-    console.log(e.target.value)
   }
   componentDidMount() {
     this.props.dispatch(getMovies())

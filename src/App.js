@@ -6,8 +6,6 @@ import MovieDetails from "./containers/MovieDetails"
 
 class App extends Component {
   render() {
-    const { movies } = this.props
-    console.log(movies)
     return (
       <div className="App">
         <Container>
