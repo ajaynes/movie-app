@@ -6,9 +6,13 @@ import { getMovieDetails } from "../actions"
 
 class MovieDetails extends Component {
   componentDidMount() {
-    this.props.dispatch(getMovieDetails(this.props.id))
+    this.props.id === undefined
+      ? this.props.dispatch(getMovieDetails(this.props.match.params.movie_id))
+      : this.props.dispatch(getMovieDetails(this.props.id))
   }
   render() {
+    console.log(this.props)
+    console.log(this.props.match.params.movie_id)
     return (
       <div>
         {this.props.title}
