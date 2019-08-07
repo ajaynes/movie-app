@@ -19,7 +19,9 @@ const MovieListItem = props => {
               <Card.Title>{title}</Card.Title>
               <Card.Text>{overview}</Card.Text>
               <Link to={`/moviedetails/${id}`}>
-                <Button variant="primary">Go somewhere {id}</Button>
+                <Button variant="primary" onClick={props.seeDetails} value={id}>
+                  View Details
+                </Button>
               </Link>
             </Card.Body>
           </Col>

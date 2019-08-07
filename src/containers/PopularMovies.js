@@ -1,10 +1,14 @@
 import React, { Component } from "react"
 import { Container, Row, Col, Card } from "react-bootstrap"
 import { connect } from "react-redux"
-import { getMovies } from "../actions"
+import { getMovies, getMovieID } from "../actions"
 import MovieListItem from "../components/MovieListItem"
 
 class PopularMovies extends Component {
+  seeDetails = e => {
+    this.props.dispatch(getMovieID(e.target.value))
+    console.log(e.target.value)
+  }
   componentDidMount() {
     this.props.dispatch(getMovies())
   }
@@ -26,6 +30,7 @@ class PopularMovies extends Component {
                     title={m.original_title}
                     overview={m.overview}
                     id={m.id}
+                    seeDetails={this.seeDetails}
                   />
                 ))}
             </Row>
