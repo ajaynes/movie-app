@@ -12,10 +12,17 @@ const movies = (state = {}, action) => {
         id: action.id,
       })
     case REQUEST_MOVIE_DETAILS:
-      return {
-        ...state,
-        ...action.details,
-      }
+      return Object.assign({}, state, {
+        title: action.title,
+        backdrop: action.backdrop,
+        credits: action.credits,
+        genres: action.genres,
+        homepage: action.homepage,
+        overview: action.overview,
+        videos: action.videos,
+        vote_average: action.vote_average,
+        id: action.id,
+      })
     default:
       return state
   }

@@ -11,13 +11,33 @@ class MovieDetails extends Component {
       : this.props.dispatch(getMovieDetails(this.props.id))
   }
   render() {
-    const { title } = this.props
+    const {
+      title,
+      credits,
+      overview,
+      genres,
+      homepage,
+      vote_average,
+    } = this.props
     if (this.props.id === undefined) {
       return <div>Loading...</div>
     }
     return (
       <div>
-        {title}
+        <h1>{title}</h1>
+        <h2>{overview}</h2>
+        <h3>{homepage}</h3>
+        <h4>{vote_average}</h4>
+        <ul>
+          {credits.cast.map(cast => (
+            <li key={cast.cast_id}>{cast.name}</li>
+          ))}
+        </ul>
+        <ul>
+          {genres.map(genre => (
+            <li key={genre.id}>{genre.name}</li>
+          ))}
+        </ul>
         <Link to={`/`}>
           <Button variant="primary">Home</Button>
         </Link>
@@ -28,9 +48,14 @@ class MovieDetails extends Component {
 
 const mapStateToProps = state => {
   return {
+    backdrop: state.backdrop_path,
     title: state.title,
-    poster: state.poster_path,
+    credits: state.credits,
     genres: state.genres,
+    homepage: state.homepage,
+    overview: state.overview,
+    videos: state.videos,
+    vote_average: state.vote_average,
     id: state.id,
   }
 }

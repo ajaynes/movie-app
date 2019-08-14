@@ -31,21 +31,39 @@ const movieID = id => {
 export const getMovieID = id => {
   return dispatch => {
     dispatch(movieID(id))
-    console.log(id)
   }
 }
 
-const requestMoviesDetails = details => {
+const requestMoviesDetails = (
+  details,
+  backdrop,
+  title,
+  credits,
+  genres,
+  homepage,
+  overview,
+  videos,
+  vote_average,
+  id
+) => {
   return {
     type: REQUEST_MOVIE_DETAILS,
-    details,
+    backdrop: details.backdrop_path,
+    title: details.title,
+    credits: details.credits,
+    genres: details.genres,
+    homepage: details.homepage,
+    overview: details.overview,
+    videos: details.videos,
+    vote_average: details.vote_average,
+    id: details.id,
   }
 }
 
 export const getMovieDetails = movie_id => {
   return dispatch => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US&append_to_response=credit`
+      `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US&append_to_response=release_dates,videos,credits,similar,recommendations,images&include_image_language=en,null`
     )
       .then(response => response.json())
       .then(json => dispatch(requestMoviesDetails(json)))
