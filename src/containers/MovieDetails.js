@@ -29,8 +29,8 @@ class MovieDetails extends Component {
         <h3>{homepage}</h3>
         <h4>{vote_average}</h4>
         <ul>
-          {credits.cast.map(cast => (
-            <li key={cast.cast_id}>{cast.name}</li>
+          {credits.cast.map(c => (
+            <li key={c.cast_id}>{c.name}</li>
           ))}
         </ul>
         <ul>
