@@ -14,7 +14,7 @@ const requestMovies = movies => {
 export const getMovies = () => {
   return dispatch => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
     )
       .then(response => response.json())
       .then(json => dispatch(requestMovies(json)))
