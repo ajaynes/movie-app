@@ -19,7 +19,10 @@ class MovieDetails extends Component {
       homepage,
       vote_average,
     } = this.props
-    if (this.props.id === undefined) {
+    if (
+      this.props.id === undefined ||
+      this.props.match.params.movie_id === this.props.id
+    ) {
       return <div>Loading...</div>
     }
     return (
@@ -31,6 +34,11 @@ class MovieDetails extends Component {
         <ul>
           {credits.cast.map(c => (
             <li key={c.cast_id}>{c.name}</li>
+          ))}
+        </ul>
+        <ul>
+          {credits.crew.map(c => (
+            <li key={c.credit_id}>{c.name}</li>
           ))}
         </ul>
         <ul>
