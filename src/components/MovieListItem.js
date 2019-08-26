@@ -11,7 +11,7 @@ const MovieListItem = props => {
           <Col md={4}>
             <Card.Img
               variant="top"
-              src={`https://image.tmdb.org/t/p/w500/${poster}`}
+              src={`https://image.tmdb.org/t/p/w500${poster}`}
             />
           </Col>
           <Col md={8}>

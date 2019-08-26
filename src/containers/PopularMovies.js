@@ -14,28 +14,31 @@ class PopularMovies extends Component {
   render() {
     const { movies } = this.props
     return (
-      <Row>
-        <Col>
-          {movies === undefined ? (
-            <div>loading</div>
-          ) : (
-            <Row>
-              {movies
-                .filter(movie => movie.original_language === "en")
-                .map(m => (
-                  <MovieListItem
-                    key={m.id}
-                    poster={m.poster_path}
-                    title={m.original_title}
-                    overview={m.overview}
-                    id={m.id}
-                    seeDetails={this.seeDetails}
-                  />
-                ))}
-            </Row>
-          )}
-        </Col>
-      </Row>
+      <>
+        <h1>Popular Movies</h1>
+        <Row>
+          <Col>
+            {movies === undefined ? (
+              <div>loading</div>
+            ) : (
+              <Row>
+                {movies
+                  .filter(movie => movie.original_language === "en")
+                  .map(m => (
+                    <MovieListItem
+                      key={m.id}
+                      poster={m.poster_path}
+                      title={m.original_title}
+                      overview={m.overview}
+                      id={m.id}
+                      seeDetails={this.seeDetails}
+                    />
+                  ))}
+              </Row>
+            )}
+          </Col>
+        </Row>
+      </>
     )
   }
 }
